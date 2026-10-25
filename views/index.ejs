@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hero Association Rankings</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container ">
+  <div class="reg">
+  <h3>Registered Heroes:</h3>
+
+  <ul class="messages">
+  <% for(let i=0; i<messages.length; i++) {%>
+    <li class="message" data-id="<%= messages[i]._id %>">
+      <span><%= messages[i].name %></span>
+      <span class="cls"><%= messages[i].msg %></span>
+      <span><%= messages[i].thumbUp %> points</span>
+      <span><button class="retire"><i class="fa fa-times" aria-hidden="true"></i> Retire Hero</button></span>
+    </li>
+  <% } %>
+  </ul>
+  </div>
+  <hr>
+
+   <form action="/threats" method="POST">
+    <button type="submit" class="thr">🚨 Scan for Threats 🚨</button>
+  </form>
+
+  <ul class="threats">
+  <% for(let j=0; j<threats.length; j++) {%>
+    <li class="threat">
+    <%= threats[j].level %>-level threat: <%= threats[j].name %> (<%= threats[j].status %>)
+
+    <% if (threats[j].status === 'active') { %>
+        <form action="/threats/<%= threats[j]._id %>/dispatch" method="POST">
+          <select name="heroName">
+            <% for (let k = 0; k < messages.length; k++) { %>
+              <option><%= messages[k].name %></option>
+            <% } %>
+          </select>
+          <button type="submit" class="dis">Dispatch Hero</button>
+        </form>
+      <% } %>
+
+      <p><%= threats[j].outcome %></p>
+    </li>
+  <% } %>
+  </ul>
+  <hr>
+  <h3>Register a Hero</h3>
+
+  <form action="/messages" method="POST">
+    <input type="text" placeholder="Hero Name" name="name">
+    <input type="text" placeholder="Class: S | A | B | C" name="msg">
+    <button class="press" type="submit">Register Hero</button>
+  </form>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>

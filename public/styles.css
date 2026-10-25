@@ -1,0 +1,56 @@
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: url('images/one-punch-man-characters.jpg') center / cover no-repeat;
+}
+
+h3{
+  margin-top: 40px;
+}
+
+.container{
+    font-family: "Comic Sans MS", sans-serif;
+    text-align:center;
+    border:3px solid rgb(144, 181, 64);
+    border-radius:10px;
+    width:auto;
+    height:auto;
+    background: rgba(229, 226, 119, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 0 10px 20px 10px;
+}
+.messages, .threats{
+  list-style: none;
+}
+.cls{
+  border:2px solid black;
+}
+
+.dis{
+  background:rgb(96, 30, 96);
+  color:white;
+  border-radius:7px;
+}
+
+.thr{
+  color:white;
+  background: rgb(28, 66, 57);
+  border-radius:7px;
+}
+
+.press{
+  background:orange;
+  border-radius:7px;
+}
+
+.retire{
+  background:rgb(174, 56, 33);
+  border-radius:7px;
+}
+
+input::placeholder{
+  text-align:center;
+}
